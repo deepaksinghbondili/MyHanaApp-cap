@@ -35,3 +35,11 @@ entity V_ASSEMBLY_REQ {
     REF_PRODID    : String(40);
     COMPCIR_QTY   : Decimal(13, 3);
 }
+
+entity Organization {
+  EmployeeID   : Integer;
+  EmployeeName : String(50);
+  Phone        : Integer;
+  City         : String(50);
+  Company      : String(100);
+}

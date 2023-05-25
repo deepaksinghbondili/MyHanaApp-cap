@@ -15,7 +15,8 @@
   "scripts": {
     "start": "cds-serve",
     "watch-listreport": "cds watch --open listreport/webapp/index.html?sap-ui-xx-viewCache=false",
-    "watch-assemblyapp": "cds watch --open assemblyapp/webapp/index.html?sap-ui-xx-viewCache=false"
+    "watch-assemblyapp": "cds watch --open assemblyapp/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-crud-app": "cds watch --open crud-app/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "cds": {
     "build": {
@@ -43,7 +44,8 @@
   },
   "sapux": [
     "app/listreport",
-    "app/assemblyapp"
+    "app/assemblyapp",
+    "app/crud-app"
   ],
   "devDependencies": {
     "@sap/ux-specification": "^1.108.6"
