@@ -21,3 +21,17 @@ entity Interactions_Items {
         LANGU   : String(2);
         LOGTEXT : LText;
 };
+
+entity V_ASSEMBLY_REQ {
+    LOCATION_ID   : String(4);
+    PRODUCT_ID    : String(40);
+    ITEM_NUM      : String(6);
+    COMPONENT     : String(40);
+    WEEK_DATE     : Date;
+    MODEL_VERSION : String(20);
+    VERSION       : String(10);
+    SCENARIO      : String(32);
+    TYPE          : String(2);
+    REF_PRODID    : String(40);
+    COMPCIR_QTY   : Decimal(13, 3);
+}

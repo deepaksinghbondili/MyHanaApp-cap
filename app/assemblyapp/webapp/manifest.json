@@ -1,0 +1,190 @@
+{
+  "_version": "1.49.0",
+  "sap.app": {
+    "id": "fiori.assemblyapp",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:lrop",
+      "version": "1.9.4",
+      "toolsId": "cf4467cc-2475-4e53-a48d-f752a6fff44e"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/catalog/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "4.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.114.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.ushell": {},
+        "sap.fe.templates": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "fiori.assemblyapp.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {},
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "CP_ASSEMBLY_REQ_SETList",
+          "target": "CP_ASSEMBLY_REQ_SETList"
+        },
+        {
+          "pattern": "CP_ASSEMBLY_REQ_SET({key}):?query:",
+          "name": "CP_ASSEMBLY_REQ_SETObjectPage",
+          "target": "CP_ASSEMBLY_REQ_SETObjectPage"
+        }
+      ],
+      "targets": {
+        "CP_ASSEMBLY_REQ_SETList": {
+          "type": "Component",
+          "id": "CP_ASSEMBLY_REQ_SETList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "entitySet": "CP_ASSEMBLY_REQ_SET",
+              "variantManagement": "Page",
+              "navigation": {
+                "CP_ASSEMBLY_REQ_SET": {
+                  "detail": {
+                    "route": "CP_ASSEMBLY_REQ_SETObjectPage"
+                  }
+                }
+              },
+              "views": {
+                "paths": [
+                  {
+                    "primary": [
+                      {
+                        "annotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant"
+                      }
+                    ],
+                    "secondary": [
+                      {
+                        "annotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant"
+                      }
+                    ],
+                    "defaultPath": "both"
+                  }
+                ]
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.SelectionFields": {
+                  "layout": "CompactVisual",
+                  "initialLayout": "Compact",
+                  "filterFields": {
+                    "WEEK_DATE": {
+                      "visualFilter": {
+                        "valueList": "com.sap.vocabularies.Common.v1.ValueList#vlDate"
+                      }
+                    },
+                    "LOCATION_ID": {
+                      "visualFilter": {
+                        "valueList": "com.sap.vocabularies.Common.v1.ValueList#vlLocation"
+                      }
+                    },
+                    "COMPONENT": {
+                      "visualFilter": {
+                        "valueList": "com.sap.vocabularies.Common.v1.ValueList#visualFilter"
+                      }
+                    },
+                    "PRODUCT_ID": {
+                      "visualFilter": {
+                        "valueList": "com.sap.vocabularies.Common.v1.ValueList#visualFilter"
+                      }
+                    }
+                  }
+                }
+              },
+              "initialLoad": "Enabled",
+              "content": {
+                "Chart": {
+                  "chartSettings": {
+                    "showDataLabel": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "CP_ASSEMBLY_REQ_SETObjectPage": {
+          "type": "Component",
+          "id": "CP_ASSEMBLY_REQ_SETObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "entitySet": "CP_ASSEMBLY_REQ_SET"
+            }
+          }
+        }
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  }
+}
