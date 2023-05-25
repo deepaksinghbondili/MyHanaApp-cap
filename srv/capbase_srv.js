@@ -8,7 +8,7 @@ module.exports = srv => {
         try {
             debugger;
             const obj = JSON.parse(req.data.Obj);
-            await cds.run(INSERT.into("APP_INTERACTIONS_ORGANIZATION").entries(obj));
+            await cds.run(INSERT.into("DB_ORGANIZATION").entries(obj));
             const result = { message: "Successfully Created " }
             return result;
         } catch (error) {
